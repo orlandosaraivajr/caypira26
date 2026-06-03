@@ -1,0 +1,100 @@
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Orlando Saraiva do Nascimento Júnior">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>Vagas de Estágio</title>
+    <style>
+        body { background-color: #f8f9fa; }
+        .page-wrapper { max-width: 480px; margin: 3rem auto; padding: 0 1rem; }
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .action-card {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1.1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: border-color .15s, background .15s;
+        }
+        .action-card:hover { border-color: #ced4da; background: #f8f9fa; color: inherit; }
+        .action-icon {
+            width: 40px; height: 40px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 1.25rem;
+        }
+        .ic-create { background: #d1e7dd; color: #0a5c36; }
+        .ic-list   { background: #cfe2ff; color: #084298; }
+        .ic-edit   { background: #fff3cd; color: #664d03; }
+        .ic-delete { background: #f8d7da; color: #842029; }
+        .action-label { font-size: 0.9375rem; font-weight: 500; margin: 0 0 2px; }
+        .action-desc  { font-size: 0.75rem; color: #6c757d; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <h1 class="fs-4 fw-semibold mb-1">Vagas de estágio</h1>
+        <p class="text-muted small mb-4">Cadastro e gerenciamento de vagas</p>
+
+        <div class="action-grid">
+            <form action="{% url 'core:create' %}" method="GET">
+                <button type="submit" class="action-card w-100 border-0 text-start">
+                    <div class="action-icon ic-create">
+                        <i class="bi bi-plus-lg"></i>
+                    </div>
+                    <div>
+                        <p class="action-label">Cadastrar</p>
+                        <p class="action-desc">Nova vaga</p>
+                    </div>
+                </button>
+            </form>
+
+            <form action="{% url 'core:read' %}" method="GET">
+                <button type="submit" class="action-card w-100 border-0 text-start">
+                    <div class="action-icon ic-list">
+                        <i class="bi bi-list-ul"></i>
+                    </div>
+                    <div>
+                        <p class="action-label">Listar</p>
+                        <p class="action-desc">Ver todas as vagas</p>
+                    </div>
+                </button>
+            </form>
+
+            <form action="{% url 'core:update' %}" method="GET">
+                <button type="submit" class="action-card w-100 border-0 text-start">
+                    <div class="action-icon ic-edit">
+                        <i class="bi bi-pencil"></i>
+                    </div>
+                    <div>
+                        <p class="action-label">Atualizar</p>
+                        <p class="action-desc">Editar uma vaga</p>
+                    </div>
+                </button>
+            </form>
+
+            <form action="{% url 'core:delete' %}" method="GET">
+                <button type="submit" class="action-card w-100 border-0 text-start">
+                    <div class="action-icon ic-delete">
+                        <i class="bi bi-trash"></i>
+                    </div>
+                    <div>
+                        <p class="action-label">Remover</p>
+                        <p class="action-desc">Excluir uma vaga</p>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
